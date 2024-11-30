@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class LinkList {
     private Link first; // Reference to the first link
 
@@ -35,6 +38,23 @@ public class LinkList {
         while (current != null) {
             current.displayLink();
             current = current.next;
+        }
+    }
+
+    // **Shuffle Method** (Added Here)
+    public void shuffle() {
+        // Step 1: Extract all cards into an ArrayList
+        ArrayList<Card> cardArray = new ArrayList<>();
+        while (!isEmpty()) {
+            cardArray.add(removeFirst());
+        }
+
+        // Step 2: Shuffle the ArrayList
+        Collections.shuffle(cardArray);
+
+        // Step 3: Add shuffled cards back to the LinkedList
+        for (Card card : cardArray) {
+            add(card);
         }
     }
 }
